@@ -47,8 +47,6 @@
     a { color: var(--coral-strong); }
     .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 
-    /* Sprache: ohne JavaScript Deutsch */
-    body[data-lang="en"] .de, body:not([data-lang="en"]) .en { display: none !important; }
 
     header.top {
       display: flex; align-items: center; justify-content: space-between;
@@ -58,8 +56,8 @@
     .brand img { width: 36px; height: 36px; border-radius: 9px; }
     .lang { display: flex; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
     .lang button {
-      border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 700;
-      padding: 4px 12px; border-radius: 999px; cursor: pointer;
+      border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 13px; font-weight: 700;
+      padding: 4px 8px; border-radius: 999px; cursor: pointer;
     }
     .lang button[aria-pressed="true"] { background: var(--coral-strong); color: #fff; }
 
@@ -96,7 +94,8 @@
     .ring svg { transform: rotate(-90deg); }
     .ring .num { position: absolute; inset: 0; display: grid; place-content: center; }
     .ring .num b { font-size: 40px; line-height: 1; }
-    .ring .num small { color: var(--muted); font-size: 12px; font-weight: 600; }
+    .ring .num { text-align: center; }
+    .ring .num small { color: var(--muted); font-size: 11px; font-weight: 600; display: block; max-width: 92px; margin: 0 auto; line-height: 1.25; }
     .row { background: var(--card); border-radius: 18px; padding: 12px 14px; margin-top: 8px; display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
     .dot { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 16px; }
     .row .bar { grid-column: 2 / 4; height: 6px; border-radius: 3px; background: var(--track); overflow: hidden; }
@@ -153,22 +152,23 @@
       <div class="lang" role="group" aria-label="Sprache / Language">
         <button type="button" data-set="de" aria-pressed="true">DE</button>
         <button type="button" data-set="en" aria-pressed="false">EN</button>
+        <button type="button" data-set="es" aria-pressed="false">ES</button>
+        <button type="button" data-set="fr" aria-pressed="false">FR</button>
+        <button type="button" data-set="it" aria-pressed="false">IT</button>
+        <button type="button" data-set="nl" aria-pressed="false">NL</button>
       </div>
     </header>
 
     <div class="hero">
       <div>
-        <h1 class="de">Bildschirmzeit, die <span>einfach funktioniert.</span></h1>
-        <h1 class="en">Screen time that <span>simply works.</span></h1>
-        <p class="lead de">Tiko Kinderzeit gibt Eltern die Kontrolle über die Bildschirmzeit – ohne Schlupflöcher, ohne Abo-Falle und mit einer Ansicht, die Kinder gern anschauen.</p>
-        <p class="lead en">Tiko gives parents control over screen time – no loopholes, no subscription traps, and with a view kids actually like to look at.</p>
+        <h1 data-t="h1">Bildschirmzeit, die <span>einfach funktioniert.</span></h1>
+        <p class="lead" data-t="lead">Tiko Kinderzeit gibt Eltern die Kontrolle über die Bildschirmzeit – ohne Schlupflöcher, ohne Abo-Falle und mit einer Ansicht, die Kinder gern anschauen.</p>
         <div class="cta">
           <a class="store" href="https://apps.apple.com/app/id6822364255">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.38-3.68zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.75-.96 2.79 1.02.08 2.05-.52 2.68-1.27z"/></svg>
-            <span class="de">Im App Store laden</span><span class="en">Download on the App Store</span>
+            <span data-t="store">Im App Store laden</span>
           </a>
-          <span class="note de">Für iPhone, iPad und Mac · kostenlos</span>
-          <span class="note en">For iPhone, iPad and Mac · free</span>
+          <span class="note" data-t="note">Für iPhone, iPad und Mac · kostenlos</span>
         </div>
       </div>
 
@@ -176,7 +176,7 @@
         <div class="screen">
           <div class="hello">
             <div class="avatar">🦊</div>
-            <div><b class="de">Hallo Lina!</b><b class="en">Hi Lina!</b><small class="de">Mittwoch</small><small class="en">Wednesday</small></div>
+            <div><b data-t="hi">Hallo Lina!</b><small data-t="weekday">Mittwoch</small></div>
           </div>
           <div class="ringcard">
             <div class="ring">
@@ -184,19 +184,19 @@
                 <circle cx="70" cy="70" r="58" fill="none" stroke="var(--track)" stroke-width="16"/>
                 <circle cx="70" cy="70" r="58" fill="none" stroke="var(--mint)" stroke-width="16" stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="120"/>
               </svg>
-              <div class="num"><b>45</b><small class="de">Minuten übrig</small><small class="en">minutes left</small></div>
+              <div class="num"><b>45</b><small data-t="left">Minuten übrig</small></div>
             </div>
-            <strong class="de">Viel Spaß! 🎈</strong><strong class="en">Have fun! 🎈</strong>
+            <strong data-t="fun">Viel Spaß! 🎈</strong>
           </div>
           <div class="row">
             <div class="dot" style="background:#FFE3DA">🎮</div>
-            <b class="de">Spiele</b><b class="en">Games</b>
+            <b data-t="games">Spiele</b>
             <span class="left">20 Min.</span>
             <div class="bar"><i style="width:55%;background:var(--mint)"></i></div>
           </div>
           <div class="row">
             <div class="dot" style="background:#E6E2FF">💬</div>
-            <b class="de">Social Media</b><b class="en">Social media</b>
+            <b data-t="social">Social Media</b>
             <span class="left">25 Min.</span>
             <div class="bar"><i style="width:70%;background:var(--mint)"></i></div>
           </div>
@@ -207,52 +207,23 @@
 
   <section>
     <div class="wrap">
-      <h2 class="de">Wenige Dinge – die aber zuverlässig.</h2>
-      <h2 class="en">A few things – done reliably.</h2>
-      <p class="sub de">Viele Kindersicherungen wollen alles können und werden dadurch kompliziert. Tiko konzentriert sich auf das, was im Familienalltag zählt.</p>
-      <p class="sub en">Many parental controls try to do everything and get complicated. Tiko focuses on what matters in everyday family life.</p>
+      <h2 data-t="few_h">Wenige Dinge – die aber zuverlässig.</h2>
+      <p class="sub" data-t="few_p">Viele Kindersicherungen wollen alles können und werden dadurch kompliziert. Tiko konzentriert sich auf das, was im Familienalltag zählt.</p>
       <div class="pillars">
         <div class="card">
           <div class="icon" style="background:#E6E2FF">👀</div>
-          <h3 class="de">Sehen</h3><h3 class="en">See</h3>
-          <ul class="de">
-            <li>Auf einen Blick: wie viel Zeit heute schon genutzt wurde</li>
-            <li>iPhone und iPad teilen sich eine gemeinsame Zeit</li>
-            <li>Statistik und Apps-Rangliste für Woche, Monat und Jahr</li>
-          </ul>
-          <ul class="en">
-            <li>At a glance: how much time was used today</li>
-            <li>iPhone and iPad share one time budget</li>
-            <li>Statistics and top apps for week, month and year</li>
-          </ul>
+          <h3 data-t="see">Sehen</h3>
+          <ul><li data-t="see1">Auf einen Blick: wie viel Zeit heute schon genutzt wurde</li><li data-t="see2">iPhone und iPad teilen sich eine gemeinsame Zeit</li><li data-t="see3">Statistik und Apps-Rangliste für Woche, Monat und Jahr</li></ul>
         </div>
         <div class="card">
           <div class="icon" style="background:#FFE3DA">⏳</div>
-          <h3 class="de">Begrenzen</h3><h3 class="en">Limit</h3>
-          <ul class="de">
-            <li>Tageslimits pro App-Gruppe, z. B. Spiele oder Social Media</li>
-            <li>Ruhezeit für die Nacht und Pause auf Knopfdruck</li>
-            <li>Kein „Noch eine Minute“ – und es hält auch offline</li>
-          </ul>
-          <ul class="en">
-            <li>Daily limits per app group, e.g. games or social media</li>
-            <li>Downtime for the night and a pause at the push of a button</li>
-            <li>No “One more minute” – and it holds even offline</li>
-          </ul>
+          <h3 data-t="limit">Begrenzen</h3>
+          <ul><li data-t="lim1">Tageslimits pro App-Gruppe, z. B. Spiele oder Social Media</li><li data-t="lim2">Ruhezeit für die Nacht und Pause auf Knopfdruck</li><li data-t="lim3">Kein „Noch eine Minute“ – und es hält auch offline</li></ul>
         </div>
         <div class="card">
           <div class="icon" style="background:#D9F5E7">🙋</div>
-          <h3 class="de">Reagieren</h3><h3 class="en">Respond</h3>
-          <ul class="de">
-            <li>Dein Kind fragt in Tiko nach mehr Zeit</li>
-            <li>Du antwortest direkt aus der Mitteilung</li>
-            <li>Zusatzzeit gilt nur heute – morgen gilt wieder das Limit</li>
-          </ul>
-          <ul class="en">
-            <li>Your child asks for more time in Tiko</li>
-            <li>You answer right from the notification</li>
-            <li>Extra time only applies today – tomorrow the limit is back</li>
-          </ul>
+          <h3 data-t="respond">Reagieren</h3>
+          <ul><li data-t="res1">Dein Kind fragt in Tiko nach mehr Zeit</li><li data-t="res2">Du antwortest direkt aus der Mitteilung</li><li data-t="res3">Zusatzzeit gilt nur heute – morgen gilt wieder das Limit</li></ul>
         </div>
       </div>
     </div>
@@ -261,31 +232,17 @@
   <section>
     <div class="wrap split">
       <div class="card">
-        <h3 class="de">„Mehr Zeit?“ in Sekunden beantwortet</h3>
-        <h3 class="en">“More time?” answered in seconds</h3>
-        <p class="de" style="color:var(--muted)">Ist die Zeit aufgebraucht, kann dein Kind direkt auf dem Sperrbildschirm fragen. Du bekommst eine Mitteilung und tippst einfach auf die Antwort.</p>
-        <p class="en" style="color:var(--muted)">When time is up, your child can ask right on the block screen. You get a notification and simply tap your answer.</p>
+        <h3 data-t="req_h">„Mehr Zeit?“ in Sekunden beantwortet</h3>
+        <p style="color:var(--muted)" data-t="req_p">Ist die Zeit aufgebraucht, kann dein Kind direkt auf dem Sperrbildschirm fragen. Du bekommst eine Mitteilung und tippst einfach auf die Antwort.</p>
         <div class="request">
           <div class="avatar">🦊</div>
-          <div><b class="de">Lina möchte mehr Zeit</b><b class="en">Lina wants more time</b><small>Social Media · 18:42</small></div>
+          <div><b data-t="req_who">Lina möchte mehr Zeit</b><small>Social Media · 18:42</small></div>
         </div>
-        <div class="chips"><span class="chip">+15</span><span class="chip">+30</span><span class="chip">+60</span><span class="chip no de">Nein</span><span class="chip no en">No</span></div>
+        <div class="chips"><span class="chip">+15</span><span class="chip">+30</span><span class="chip">+60</span><span class="chip no" data-t="no">Nein</span></div>
       </div>
       <div class="card">
-        <h3 class="de">Für Kinder gemacht</h3>
-        <h3 class="en">Made for kids</h3>
-        <ul class="de">
-          <li>Freundliche Ansicht „Noch 25 Minuten übrig“ statt Verbote</li>
-          <li>Bei 15 Minuten Rest kommt einmal eine Mitteilung, danach zählt Tiko still herunter</li>
-          <li>Eigener Sperrbildschirm mit „Mehr Zeit anfragen“</li>
-          <li>Tiko lässt sich nur mit dem Passwort der Eltern entfernen</li>
-        </ul>
-        <ul class="en">
-          <li>A friendly “25 minutes left” instead of bans</li>
-          <li>One notification at 15 minutes left, then Tiko counts down quietly</li>
-          <li>Its own block screen with “Ask for more time”</li>
-          <li>Tiko can only be removed with a parent's password</li>
-        </ul>
+        <h3 data-t="kids_h">Für Kinder gemacht</h3>
+        <ul><li data-t="kid1">Freundliche Ansicht „Noch 25 Minuten übrig“ statt Verbote</li><li data-t="kid2">Bei 15 Minuten Rest kommt einmal eine Mitteilung, danach zählt Tiko still herunter</li><li data-t="kid3">Eigener Sperrbildschirm mit „Mehr Zeit anfragen“</li><li data-t="kid4">Tiko lässt sich nur mit dem Passwort der Eltern entfernen</li></ul>
       </div>
     </div>
   </section>
@@ -293,70 +250,29 @@
   <section>
     <div class="wrap">
       <div class="privacy">
-        <h2 class="de">Eure Daten bleiben bei euch.</h2>
-        <h2 class="en">Your data stays with you.</h2>
-        <p class="de">Tiko nutzt Apples offizielle Bildschirmzeit-Technik. Regeln und Nutzungszeiten liegen nur auf euren Geräten und in der iCloud eurer Familie. Wir haben darauf keinen Zugriff.</p>
-        <p class="en">Tiko uses Apple's official Screen Time technology. Rules and usage stay on your devices and in your family's iCloud. We have no access to it.</p>
-        <ul class="de">
-          <li>Keine eigenen Server</li>
-          <li>Keine Werbung, kein Tracking</li>
-          <li>Keine Profile, keine Tricks</li>
-          <li>Welche Apps genutzt werden, sieht Tiko nur verschlüsselt</li>
-        </ul>
-        <ul class="en">
-          <li>No servers of our own</li>
-          <li>No ads, no tracking</li>
-          <li>No profiles, no tricks</li>
-          <li>Tiko only sees encrypted identifiers for apps</li>
-        </ul>
+        <h2 data-t="priv_h">Eure Daten bleiben bei euch.</h2>
+        <p data-t="priv_p">Tiko nutzt Apples offizielle Bildschirmzeit-Technik. Regeln und Nutzungszeiten liegen nur auf euren Geräten und in der iCloud eurer Familie. Wir haben darauf keinen Zugriff.</p>
+        <ul><li data-t="pv1">Keine eigenen Server</li><li data-t="pv2">Keine Werbung, kein Tracking</li><li data-t="pv3">Keine Profile, keine Tricks</li><li data-t="pv4">Welche Apps genutzt werden, sieht Tiko nur verschlüsselt</li></ul>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2 class="de">Kostenlos starten.</h2>
-      <h2 class="en">Start for free.</h2>
-      <p class="sub de">Die Grundfunktionen sind kostenlos. Tiko Familie schaltet alles frei – ein Kauf gilt über die Familienfreigabe für die ganze Familie.</p>
-      <p class="sub en">The basics are free. Tiko Family unlocks everything – one purchase covers the whole family through Family Sharing.</p>
+      <h2 data-t="free_h">Kostenlos starten.</h2>
+      <p class="sub" data-t="free_p">Die Grundfunktionen sind kostenlos. Tiko Familie schaltet alles frei – ein Kauf gilt über die Familienfreigabe für die ganze Familie.</p>
       <div class="plans">
         <div class="card plan">
-          <h3><span class="de">Basis</span><span class="en">Basic</span><span class="price de">kostenlos</span><span class="price en">free</span></h3>
-          <ul class="de">
-            <li>Ein Kind, beliebig viele Geräte</li>
-            <li>Tageslimits, Ruhezeit und Pause</li>
-            <li>Anfragen per Mitteilung beantworten</li>
-            <li>Statistik der letzten 7 Tage</li>
-          </ul>
-          <ul class="en">
-            <li>One child, any number of devices</li>
-            <li>Daily limits, downtime and pause</li>
-            <li>Answer requests from notifications</li>
-            <li>Statistics for the last 7 days</li>
-          </ul>
+          <h3><span data-t="basic">Basis</span><span class="price" data-t="gratis">kostenlos</span></h3>
+          <ul><li data-t="b1">Ein Kind, beliebig viele Geräte</li><li data-t="b2">Tageslimits, Ruhezeit und Pause</li><li data-t="b3">Anfragen per Mitteilung beantworten</li><li data-t="b4">Statistik der letzten 7 Tage</li></ul>
         </div>
         <div class="card plan family">
-          <h3><span class="de">Tiko Familie</span><span class="en">Tiko Family</span><span class="price de">2 Wochen gratis</span><span class="price en">2 weeks free</span></h3>
-          <ul class="de">
-            <li>Alle Kinder</li>
-            <li>Wochenlimits, Schultage/Wochenende und Ferienmodus</li>
-            <li>Belohnungen und Zusatzzeit für den ganzen Tag oder minutengenau</li>
-            <li>Apps und Websites aus der Ferne sperren</li>
-            <li>Statistik für ein ganzes Jahr</li>
-          </ul>
-          <ul class="en">
-            <li>All children</li>
-            <li>Weekly limits, school days/weekends and holiday mode</li>
-            <li>Rewards and extra time for the whole day or to the minute</li>
-            <li>Block apps and websites remotely</li>
-            <li>A full year of statistics</li>
-          </ul>
-          <p class="note de">Monatlich, jährlich oder einmalig – ohne Abo-Falle.</p>
-          <p class="note en">Monthly, yearly or once – no subscription traps.</p>
+          <h3><span data-t="family">Tiko Familie</span><span class="price" data-t="trial">2 Wochen gratis</span></h3>
+          <ul><li data-t="f1">Alle Kinder</li><li data-t="f2">Wochenlimits, Schultage/Wochenende und Ferienmodus</li><li data-t="f3">Belohnungen und Zusatzzeit für den ganzen Tag oder minutengenau</li><li data-t="f4">Apps und Websites aus der Ferne sperren</li><li data-t="f5">Statistik für ein ganzes Jahr</li></ul>
+          <p class="note" data-t="fnote">Monatlich, jährlich oder einmalig – ohne Abo-Falle.</p>
         </div>
       </div>
-      <p class="note de" style="margin-top:24px">Voraussetzungen: iOS/iPadOS 16 oder neuer, dein Kind ist in eurer Apple-Familienfreigabe eingetragen.</p>
-      <p class="note en" style="margin-top:24px">Requirements: iOS/iPadOS 16 or later, your child is part of your Apple Family Sharing.</p>
+      <p class="note" style="margin-top:24px" data-t="reqs">Voraussetzungen: iOS/iPadOS 16 oder neuer, dein Kind ist in eurer Apple-Familienfreigabe eingetragen.</p>
     </div>
   </section>
 
@@ -364,31 +280,41 @@
     <footer>
       <div class="links">
         <a href="support.html">Support</a>
-        <a href="datenschutz.html"><span class="de">Datenschutz</span><span class="en">Privacy Policy</span></a>
+        <a href="datenschutz.html" data-t="privacy">Datenschutz</a>
         <a href="mailto:andreas.fleps@proton.me">andreas.fleps@proton.me</a>
       </div>
-      <strong class="de">Impressum</strong><strong class="en">Legal notice</strong>
+      <strong data-t="imprint">Impressum</strong>
       <address>
         Andreas Fleps<br>
         Schwärzweg 60, 74219 Möckmühl<br>
-        <span class="de">E-Mail</span><span class="en">Email</span>: andreas.fleps@proton.me
+        <span data-t="email">E-Mail</span>: andreas.fleps@proton.me
       </address>
-      <p>© 2026 Andreas Fleps · <span class="de">Apple, iPhone, iPad und App Store sind Marken der Apple Inc.</span><span class="en">Apple, iPhone, iPad and App Store are trademarks of Apple Inc.</span></p>
+      <p>© 2026 Andreas Fleps · <span data-t="tm">Apple, iPhone, iPad und App Store sind Marken der Apple Inc.</span></p>
     </footer>
   </div>
 
   <script>
     (function () {
-      var stored = null;
-      try { stored = localStorage.getItem('tiko-lang'); } catch (e) {}
-      var lang = stored || ((navigator.language || 'de').toLowerCase().indexOf('de') === 0 ? 'de' : 'en');
+      var T = {"en": {"title": "Tiko Kids Time – Screen time for families", "h1": "Screen time that <span>simply works.</span>", "lead": "Tiko gives parents control over screen time – no loopholes, no subscription traps, and with a view kids actually like to look at.", "store": "Download on the App Store", "note": "For iPhone, iPad and Mac · free", "hi": "Hi Lina!", "weekday": "Wednesday", "left": "minutes left", "fun": "Have fun! 🎈", "games": "Games", "social": "Social media", "few_h": "A few things – done reliably.", "few_p": "Many parental controls try to do everything and get complicated. Tiko focuses on what matters in everyday family life.", "see": "See", "see1": "At a glance: how much time was used today", "see2": "iPhone and iPad share one time budget", "see3": "Statistics and top apps for week, month and year", "limit": "Limit", "lim1": "Daily limits per app group, e.g. games or social media", "lim2": "Downtime for the night and a pause at the push of a button", "lim3": "No “One more minute” – and it holds even offline", "respond": "Respond", "res1": "Your child asks for more time in Tiko", "res2": "You answer right from the notification", "res3": "Extra time only applies today – tomorrow the limit is back", "req_h": "“More time?” answered in seconds", "req_p": "When time is up, your child can ask right on the block screen. You get a notification and simply tap your answer.", "req_who": "Lina wants more time", "no": "No", "kids_h": "Made for kids", "kid1": "A friendly “25 minutes left” instead of bans", "kid2": "One notification at 15 minutes left, then Tiko counts down quietly", "kid3": "Its own block screen with “Ask for more time”", "kid4": "Tiko can only be removed with a parent's password", "priv_h": "Your data stays with you.", "priv_p": "Tiko uses Apple's official Screen Time technology. Rules and usage stay on your devices and in your family's iCloud. We have no access to it.", "pv1": "No servers of our own", "pv2": "No ads, no tracking", "pv3": "No profiles, no tricks", "pv4": "Tiko only sees encrypted identifiers for apps", "free_h": "Start for free.", "free_p": "The basics are free. Tiko Family unlocks everything – one purchase covers the whole family through Family Sharing.", "basic": "Basic", "gratis": "free", "b1": "One child, any number of devices", "b2": "Daily limits, downtime and pause", "b3": "Answer requests from notifications", "b4": "Statistics for the last 7 days", "family": "Tiko Family", "trial": "2 weeks free", "f1": "All children", "f2": "Weekly limits, school days/weekends and holiday mode", "f3": "Rewards and extra time for the whole day or to the minute", "f4": "Block apps and websites remotely", "f5": "A full year of statistics", "fnote": "Monthly, yearly or once – no subscription traps.", "reqs": "Requirements: iOS/iPadOS 16 or later, your child is part of your Apple Family Sharing.", "privacy": "Privacy Policy", "imprint": "Legal notice", "email": "Email", "tm": "Apple, iPhone, iPad and App Store are trademarks of Apple Inc."}, "es": {"title": "Tiko Tiempo Niños – Tiempo de pantalla en familia", "h1": "Tiempo de pantalla que <span>simplemente funciona.</span>", "lead": "Tiko da a los padres el control del tiempo de pantalla: sin trucos, sin trampas de suscripción y con una vista que a los niños les gusta mirar.", "store": "Descargar en el App Store", "note": "Para iPhone, iPad y Mac · gratis", "hi": "¡Hola, Lina!", "weekday": "Miércoles", "left": "minutos restantes", "fun": "¡Diviértete! 🎈", "games": "Juegos", "social": "Redes sociales", "few_h": "Pocas cosas, pero bien hechas.", "few_p": "Muchos controles parentales quieren hacerlo todo y se vuelven complicados. Tiko se centra en lo que importa en el día a día de la familia.", "see": "Ver", "see1": "De un vistazo: cuánto tiempo se ha usado hoy", "see2": "iPhone y iPad comparten un mismo tiempo", "see3": "Estadísticas y apps más usadas por semana, mes y año", "limit": "Limitar", "lim1": "Límites diarios por grupo de apps, p. ej. juegos o redes sociales", "lim2": "Tiempo de descanso por la noche y pausa con un toque", "lim3": "Sin “Un minuto más”, y funciona incluso sin conexión", "respond": "Responder", "res1": "Tu hijo pide más tiempo en Tiko", "res2": "Tú respondes desde la notificación", "res3": "El tiempo extra solo vale hoy; mañana vuelve el límite", "req_h": "“¿Más tiempo?” respondido en segundos", "req_p": "Cuando se acaba el tiempo, tu hijo puede pedir más desde la pantalla de bloqueo. Recibes una notificación y solo tienes que tocar tu respuesta.", "req_who": "Lina quiere más tiempo", "no": "No", "kids_h": "Pensado para niños", "kid1": "Un amable “Quedan 25 minutos” en lugar de prohibiciones", "kid2": "Un aviso a los 15 minutos y después Tiko cuenta hacia atrás en silencio", "kid3": "Pantalla de bloqueo propia con “Pedir más tiempo”", "kid4": "Tiko solo se puede eliminar con la contraseña de los padres", "priv_h": "Vuestros datos se quedan con vosotros.", "priv_p": "Tiko usa la tecnología oficial de Tiempo de uso de Apple. Las reglas y el uso se quedan en vuestros dispositivos y en el iCloud de la familia. Nosotros no tenemos acceso.", "pv1": "Sin servidores propios", "pv2": "Sin anuncios ni seguimiento", "pv3": "Sin perfiles ni trucos", "pv4": "Tiko solo ve de forma cifrada qué apps se usan", "free_h": "Empieza gratis.", "free_p": "Las funciones básicas son gratis. Tiko Familia lo desbloquea todo: una compra vale para toda la familia con En familia.", "basic": "Básico", "gratis": "gratis", "b1": "Un hijo, todos los dispositivos que quieras", "b2": "Límites diarios, descanso y pausa", "b3": "Responder solicitudes desde la notificación", "b4": "Estadísticas de los últimos 7 días", "family": "Tiko Familia", "trial": "2 semanas gratis", "f1": "Todos los hijos", "f2": "Límites semanales, días de colegio/fin de semana y modo vacaciones", "f3": "Recompensas y tiempo extra para todo el día o al minuto", "f4": "Bloquear apps y webs a distancia", "f5": "Estadísticas de un año entero", "fnote": "Mensual, anual o pago único, sin trampas.", "reqs": "Requisitos: iOS/iPadOS 16 o posterior; tu hijo forma parte de tu grupo En familia de Apple.", "privacy": "Privacidad", "imprint": "Aviso legal", "email": "Correo", "tm": "Apple, iPhone, iPad y App Store son marcas de Apple Inc."}, "fr": {"title": "Tiko Temps Enfants – Temps d'écran en famille", "h1": "Un temps d'écran qui <span>fonctionne, tout simplement.</span>", "lead": "Tiko donne aux parents le contrôle du temps d'écran – sans failles, sans piège d'abonnement et avec un affichage que les enfants aiment regarder.", "store": "Télécharger dans l'App Store", "note": "Pour iPhone, iPad et Mac · gratuit", "hi": "Salut Lina !", "weekday": "Mercredi", "left": "minutes restantes", "fun": "Amuse-toi bien ! 🎈", "games": "Jeux", "social": "Réseaux sociaux", "few_h": "Peu de choses – mais bien faites.", "few_p": "Beaucoup de contrôles parentaux veulent tout faire et deviennent compliqués. Tiko se concentre sur ce qui compte au quotidien en famille.", "see": "Voir", "see1": "D'un coup d'œil : le temps déjà utilisé aujourd'hui", "see2": "iPhone et iPad partagent le même temps", "see3": "Statistiques et apps les plus utilisées par semaine, mois et année", "limit": "Limiter", "lim1": "Limites quotidiennes par groupe d'apps, p. ex. jeux ou réseaux sociaux", "lim2": "Temps calme pour la nuit et pause en un geste", "lim3": "Pas de « Encore une minute » – et ça tient même hors ligne", "respond": "Répondre", "res1": "Ton enfant demande plus de temps dans Tiko", "res2": "Tu réponds directement depuis la notification", "res3": "Le temps en plus ne vaut qu'aujourd'hui – demain, la limite revient", "req_h": "« Plus de temps ? » en quelques secondes", "req_p": "Quand le temps est écoulé, ton enfant peut demander directement sur l'écran de blocage. Tu reçois une notification et tu touches simplement ta réponse.", "req_who": "Lina veut plus de temps", "no": "Non", "kids_h": "Pensé pour les enfants", "kid1": "Un sympathique « Encore 25 minutes » plutôt que des interdits", "kid2": "Une notification à 15 minutes de la fin, puis Tiko compte à rebours en silence", "kid3": "Son propre écran de blocage avec « Demander plus de temps »", "kid4": "Tiko ne peut être supprimé qu'avec le mot de passe des parents", "priv_h": "Vos données restent chez vous.", "priv_p": "Tiko utilise la technologie officielle Temps d'écran d'Apple. Les règles et l'utilisation restent sur vos appareils et dans l'iCloud de votre famille. Nous n'y avons pas accès.", "pv1": "Pas de serveurs à nous", "pv2": "Pas de publicité, pas de suivi", "pv3": "Pas de profils, pas d'astuces", "pv4": "Tiko ne voit les apps utilisées que sous forme chiffrée", "free_h": "Commence gratuitement.", "free_p": "Les fonctions de base sont gratuites. Tiko Famille débloque tout – un seul achat pour toute la famille grâce au Partage familial.", "basic": "Basique", "gratis": "gratuit", "b1": "Un enfant, autant d'appareils que tu veux", "b2": "Limites quotidiennes, temps calme et pause", "b3": "Répondre aux demandes depuis la notification", "b4": "Statistiques des 7 derniers jours", "family": "Tiko Famille", "trial": "2 semaines gratuites", "f1": "Tous les enfants", "f2": "Limites hebdomadaires, jours d'école/week-end et mode vacances", "f3": "Récompenses et temps en plus pour toute la journée ou à la minute", "f4": "Bloquer apps et sites à distance", "f5": "Statistiques sur une année entière", "fnote": "Mensuel, annuel ou paiement unique – sans piège.", "reqs": "Conditions : iOS/iPadOS 16 ou plus récent ; ton enfant fait partie de ton Partage familial Apple.", "privacy": "Confidentialité", "imprint": "Mentions légales", "email": "E-mail", "tm": "Apple, iPhone, iPad et App Store sont des marques d'Apple Inc."}, "it": {"title": "Tiko Tempo Bambini – Tempo di utilizzo in famiglia", "h1": "Tempo di utilizzo che <span>funziona e basta.</span>", "lead": "Tiko dà ai genitori il controllo del tempo di utilizzo: senza scappatoie, senza trappole di abbonamento e con una schermata che ai bambini piace guardare.", "store": "Scarica su App Store", "note": "Per iPhone, iPad e Mac · gratis", "hi": "Ciao Lina!", "weekday": "Mercoledì", "left": "minuti rimasti", "fun": "Buon divertimento! 🎈", "games": "Giochi", "social": "Social", "few_h": "Poche cose, ma fatte bene.", "few_p": "Molti controlli parentali vogliono fare tutto e diventano complicati. Tiko si concentra su ciò che conta nella vita di famiglia.", "see": "Vedere", "see1": "A colpo d'occhio: quanto tempo è stato usato oggi", "see2": "iPhone e iPad condividono lo stesso tempo", "see3": "Statistiche e app più usate per settimana, mese e anno", "limit": "Limitare", "lim1": "Limiti giornalieri per gruppo di app, ad es. giochi o social", "lim2": "Tempo di riposo per la notte e pausa con un tocco", "lim3": "Niente “Ancora un minuto”, e funziona anche offline", "respond": "Rispondere", "res1": "Tuo figlio chiede più tempo in Tiko", "res2": "Rispondi direttamente dalla notifica", "res3": "Il tempo extra vale solo oggi: domani torna il limite", "req_h": "“Più tempo?” in pochi secondi", "req_p": "Quando il tempo è finito, tuo figlio può chiedere direttamente dalla schermata di blocco. Ricevi una notifica e tocchi semplicemente la risposta.", "req_who": "Lina vuole più tempo", "no": "No", "kids_h": "Pensato per i bambini", "kid1": "Un gentile “Ancora 25 minuti” invece di divieti", "kid2": "Una notifica a 15 minuti dalla fine, poi Tiko conta alla rovescia in silenzio", "kid3": "Schermata di blocco propria con “Chiedi più tempo”", "kid4": "Tiko si può rimuovere solo con la password dei genitori", "priv_h": "I vostri dati restano a voi.", "priv_p": "Tiko usa la tecnologia ufficiale Tempo di utilizzo di Apple. Regole e utilizzo restano sui vostri dispositivi e nell'iCloud della famiglia. Noi non vi abbiamo accesso.", "pv1": "Nessun server nostro", "pv2": "Niente pubblicità, niente tracciamento", "pv3": "Nessun profilo, nessun trucco", "pv4": "Tiko vede le app usate solo in forma cifrata", "free_h": "Inizia gratis.", "free_p": "Le funzioni di base sono gratis. Tiko Famiglia sblocca tutto: un acquisto vale per tutta la famiglia con In famiglia.", "basic": "Base", "gratis": "gratis", "b1": "Un figlio, tutti i dispositivi che vuoi", "b2": "Limiti giornalieri, riposo e pausa", "b3": "Rispondere alle richieste dalla notifica", "b4": "Statistiche degli ultimi 7 giorni", "family": "Tiko Famiglia", "trial": "2 settimane gratis", "f1": "Tutti i figli", "f2": "Limiti settimanali, giorni di scuola/weekend e modalità vacanze", "f3": "Premi e tempo extra per tutto il giorno o al minuto", "f4": "Bloccare app e siti a distanza", "f5": "Statistiche di un anno intero", "fnote": "Mensile, annuale o una tantum, senza trappole.", "reqs": "Requisiti: iOS/iPadOS 16 o successivo; tuo figlio fa parte del tuo gruppo In famiglia di Apple.", "privacy": "Privacy", "imprint": "Note legali", "email": "E-mail", "tm": "Apple, iPhone, iPad e App Store sono marchi di Apple Inc."}, "nl": {"title": "Tiko Kindertijd – Schermtijd voor gezinnen", "h1": "Schermtijd die <span>gewoon werkt.</span>", "lead": "Tiko geeft ouders grip op schermtijd – zonder achterdeurtjes, zonder abonnementsval en met een overzicht waar kinderen graag naar kijken.", "store": "Download in de App Store", "note": "Voor iPhone, iPad en Mac · gratis", "hi": "Hoi Lina!", "weekday": "Woensdag", "left": "minuten over", "fun": "Veel plezier! 🎈", "games": "Games", "social": "Social media", "few_h": "Weinig dingen – maar wel betrouwbaar.", "few_p": "Veel ouderlijk toezicht wil alles kunnen en wordt daardoor ingewikkeld. Tiko richt zich op wat telt in het dagelijkse gezinsleven.", "see": "Zien", "see1": "In één oogopslag: hoeveel tijd er vandaag al is gebruikt", "see2": "iPhone en iPad delen één tijd", "see3": "Statistieken en meest gebruikte apps per week, maand en jaar", "limit": "Beperken", "lim1": "Daglimieten per appgroep, bijv. games of social media", "lim2": "Rusttijd voor de nacht en pauze met één tik", "lim3": "Geen ‘Nog één minuut’ – en het werkt ook offline", "respond": "Reageren", "res1": "Je kind vraagt in Tiko om meer tijd", "res2": "Jij antwoordt direct vanuit de melding", "res3": "Extra tijd geldt alleen vandaag – morgen geldt weer de limiet", "req_h": "‘Meer tijd?’ in seconden beantwoord", "req_p": "Is de tijd op, dan kan je kind het direct op het blokkeerscherm vragen. Jij krijgt een melding en tikt gewoon op je antwoord.", "req_who": "Lina wil meer tijd", "no": "Nee", "kids_h": "Gemaakt voor kinderen", "kid1": "Een vriendelijk ‘Nog 25 minuten over’ in plaats van verboden", "kid2": "Eén melding bij nog 15 minuten, daarna telt Tiko stil af", "kid3": "Een eigen blokkeerscherm met ‘Meer tijd vragen’", "kid4": "Tiko kan alleen met het wachtwoord van de ouders worden verwijderd", "priv_h": "Jullie gegevens blijven bij jullie.", "priv_p": "Tiko gebruikt de officiële Schermtijd-technologie van Apple. Regels en gebruik blijven op jullie apparaten en in de iCloud van jullie gezin. Wij hebben er geen toegang toe.", "pv1": "Geen eigen servers", "pv2": "Geen advertenties, geen tracking", "pv3": "Geen profielen, geen trucjes", "pv4": "Tiko ziet alleen versleuteld welke apps worden gebruikt", "free_h": "Begin gratis.", "free_p": "De basisfuncties zijn gratis. Tiko Familie ontgrendelt alles – één aankoop geldt via Delen met gezin voor het hele gezin.", "basic": "Basis", "gratis": "gratis", "b1": "Eén kind, zoveel apparaten als je wilt", "b2": "Daglimieten, rusttijd en pauze", "b3": "Verzoeken vanuit de melding beantwoorden", "b4": "Statistieken van de laatste 7 dagen", "family": "Tiko Familie", "trial": "2 weken gratis", "f1": "Alle kinderen", "f2": "Weeklimieten, schooldagen/weekend en vakantiemodus", "f3": "Beloningen en extra tijd voor de hele dag of op de minuut", "f4": "Apps en websites op afstand blokkeren", "f5": "Statistieken over een heel jaar", "fnote": "Maandelijks, jaarlijks of eenmalig – zonder abonnementsval.", "reqs": "Vereisten: iOS/iPadOS 16 of nieuwer, je kind hoort bij jullie Apple-groep Delen met gezin.", "privacy": "Privacy", "imprint": "Colofon", "email": "E-mail", "tm": "Apple, iPhone, iPad en App Store zijn handelsmerken van Apple Inc."}};
+      var LANGS = ["de", "en", "es", "fr", "it", "nl"];
+      var de = {};
+      document.querySelectorAll('[data-t]').forEach(function (el) { de[el.getAttribute('data-t')] = el.innerHTML; });
+      de.title = document.title;
       function apply(l) {
-        document.body.setAttribute('data-lang', l);
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var k = el.getAttribute('data-t');
+          el.innerHTML = l === 'de' ? de[k] : T[l][k];
+        });
+        document.title = l === 'de' ? de.title : T[l].title;
         document.documentElement.lang = l;
         document.querySelectorAll('.lang button').forEach(function (b) {
           b.setAttribute('aria-pressed', b.getAttribute('data-set') === l ? 'true' : 'false');
         });
       }
+      var stored = null;
+      try { stored = localStorage.getItem('tiko-lang'); } catch (e) {}
+      var nav = (navigator.language || 'de').slice(0, 2).toLowerCase();
+      var lang = LANGS.indexOf(stored) >= 0 ? stored : (LANGS.indexOf(nav) >= 0 ? nav : 'en');
       document.querySelectorAll('.lang button').forEach(function (b) {
         b.addEventListener('click', function () {
           var l = b.getAttribute('data-set');
@@ -396,7 +322,7 @@
           apply(l);
         });
       });
-      apply(lang);
+      if (lang !== 'de') apply(lang);
     })();
   </script>
 </body>
